@@ -1,0 +1,361 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Gerunds & Infinitives Quiz</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: one centred column (max 760px). Sticky progress header, big question card, 2-col answer grid that stacks on phones. Bright single-theme look for students. */
+:root{
+  --bg:#EAF6FF;
+  --card:#FFFFFF;
+  --ink:#16294A;
+  --muted:#5B6F8F;
+  --line:#CFE3F5;
+  --blue:#2F7BF5;
+  --blue-d:#1F5FCC;
+  --blue-soft:#DCEBFF;
+  --sun:#FFC83D;
+  --sun-soft:#FFF2C7;
+  --ok:#13A870;
+  --ok-soft:#D9F6E8;
+  --bad:#E8454F;
+  --bad-soft:#FFE1E3;
+  --font-display:"Fredoka","Trebuchet MS",system-ui,sans-serif;
+  --font-body:"Nunito","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{height:auto}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:18px;line-height:1.55;
+  padding-block:20px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+  margin:0;
+}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;min-width:0}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;margin:0;text-wrap:balance;line-height:1.2}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+
+.card{background:var(--card);border-radius:24px;padding:28px;box-shadow:0 6px 0 var(--line)}
+@media(max-width:520px){.card{padding:20px;border-radius:20px}body{font-size:17px}}
+
+/* start */
+.hero{display:flex;flex-direction:column;gap:18px}
+.tag{align-self:flex-start;background:var(--sun-soft);color:#8A5A00;font-weight:800;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.hero h1{font-size:clamp(2rem,6vw,2.9rem)}
+.hero h1 span{color:var(--blue)}
+.hero p{margin:0;color:var(--muted)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.rule{background:var(--blue-soft);border-radius:16px;padding:12px 14px;font-weight:700;font-size:.95rem}
+.rule b{display:block;font-family:var(--font-display);font-size:1.05rem;color:var(--blue-d)}
+.rule small{font-weight:600;color:var(--muted)}
+
+.btn{border:0;border-radius:16px;padding:14px 26px;font-weight:800;background:var(--blue);color:#fff;box-shadow:0 5px 0 var(--blue-d);transition:transform .08s,box-shadow .08s}
+.btn:hover{transform:translateY(1px);box-shadow:0 4px 0 var(--blue-d)}
+.btn:active{transform:translateY(5px);box-shadow:0 0 0 var(--blue-d)}
+.btn.alt{background:var(--sun);color:#5A3B00;box-shadow:0 5px 0 #D9A21A}
+.btn.alt:hover{box-shadow:0 4px 0 #D9A21A}.btn.alt:active{box-shadow:0 0 0 #D9A21A}
+.btn.ghost{background:#fff;color:var(--blue-d);box-shadow:0 5px 0 var(--line);border:2px solid var(--line)}
+.btn.ghost:hover{box-shadow:0 4px 0 var(--line)}.btn.ghost:active{box-shadow:0 0 0 var(--line)}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:4px 8px;display:flex;flex-direction:column;gap:8px}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:12px;font-weight:800}
+.chip{background:#fff;border-radius:999px;padding:4px 14px;box-shadow:0 3px 0 var(--line);font-variant-numeric:tabular-nums;white-space:nowrap}
+.chip.ok{color:var(--ok)}
+.bar{height:14px;background:#fff;border-radius:999px;overflow:hidden;box-shadow:inset 0 0 0 2px var(--line)}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),#59A5FF);border-radius:999px;transition:width .35s}
+
+/* question */
+.qno{font-weight:800;color:var(--blue-d);font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+.q{font-size:clamp(1.25rem,3.8vw,1.6rem);font-weight:700;line-height:1.7;margin:6px 0 22px}
+.blank{display:inline-block;min-width:3.2em;padding:0 .35em;margin:0 .1em;border-bottom:4px solid var(--sun);text-align:center;color:var(--blue-d);line-height:1.25;vertical-align:baseline}
+.blank.ok{border-color:var(--ok);color:var(--ok);background:var(--ok-soft);border-radius:8px 8px 0 0}
+.blank.bad{border-color:var(--bad);color:var(--bad);background:var(--bad-soft);border-radius:8px 8px 0 0}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0;padding:0;list-style:none}
+@media(max-width:640px){.opts{grid-template-columns:1fr}}
+.opt{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:#fff;border:3px solid var(--line);border-radius:18px;padding:12px 14px;font-weight:700;color:var(--ink);box-shadow:0 4px 0 var(--line);transition:transform .08s,border-color .15s,background .15s;min-height:62px}
+.opt:hover:not(:disabled){border-color:var(--blue);background:var(--blue-soft);transform:translateY(-1px)}
+.opt .l{flex:none;width:36px;height:36px;border-radius:12px;background:var(--blue-soft);color:var(--blue-d);font-family:var(--font-display);font-size:1.1rem;display:grid;place-items:center}
+.opt .t{min-width:0;overflow-wrap:anywhere}
+.opt:disabled{cursor:default}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);box-shadow:0 4px 0 #9EDFC1}
+.opt.right .l{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);box-shadow:0 4px 0 #F5B3B7;animation:shake .35s}
+.opt.wrong .l{background:var(--bad);color:#fff}
+.opt.dim{opacity:.55}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+.fb{margin-top:20px;border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.fb.ok{background:var(--ok-soft)}.fb.bad{background:var(--bad-soft)}
+.fb h3{font-size:1.2rem}
+.fb.ok h3{color:#0B7F54}.fb.bad h3{color:#B52530}
+.fb ul{margin:0;padding-left:1.2em}
+.fb li{margin:2px 0}
+.fb code,.fix code{font-family:var(--font-body);font-weight:800;background:#fff;border-radius:8px;padding:1px 8px}
+.note{font-size:.92rem;color:var(--muted);font-weight:600}
+.next{display:flex;justify-content:flex-end;margin-top:18px}
+.hint{font-size:.85rem;color:var(--muted);font-weight:700;text-align:center}
+@media(hover:none){.hint{display:none}}
+
+/* result */
+.score{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.ring{position:relative;width:150px;height:150px;flex:none}
+.ring svg{width:150px;height:150px;transform:rotate(-90deg)}
+.ring .n{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-size:2.3rem;line-height:1}
+.ring .n small{display:block;font-size:.9rem;color:var(--muted);font-weight:500;margin-top:2px}
+.score-txt{flex:1;min-width:220px;display:flex;flex-direction:column;gap:8px}
+.score-txt h2{font-size:clamp(1.6rem,5vw,2.2rem)}
+.score-txt p{margin:0;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.stat{border-radius:16px;padding:12px;text-align:center;font-weight:800}
+.stat b{display:block;font-family:var(--font-display);font-size:1.8rem;line-height:1.1}
+.stat.a{background:var(--ok-soft);color:#0B7F54}.stat.b{background:var(--bad-soft);color:#B52530}.stat.c{background:var(--sun-soft);color:#8A5A00}
+.map{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.dot{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.95rem;font-variant-numeric:tabular-nums}
+.dot.ok{background:var(--ok);color:#fff}.dot.bad{background:var(--bad);color:#fff}
+
+.sec h2{font-size:1.5rem;margin-bottom:4px}
+.sec>p{margin:0 0 14px;color:var(--muted)}
+.topics{display:flex;flex-direction:column;gap:10px}
+.topic{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--sun-soft);border-radius:14px;padding:10px 14px;font-weight:800}
+.topic span:last-child{flex:none;font-size:.85rem;background:#fff;border-radius:999px;padding:2px 10px;color:#8A5A00}
+.review{display:flex;flex-direction:column;gap:14px}
+.rv{border:3px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.rv .qno{color:var(--bad)}
+.rv .sent{font-weight:700;line-height:1.65}
+.rv .sent mark{background:var(--ok-soft);color:#0B7F54;border-radius:6px;padding:0 6px;font-weight:800}
+.cmp{display:flex;flex-direction:column;gap:6px;font-weight:700;font-size:.97rem}
+.cmp .x{color:var(--bad);text-decoration:line-through;text-decoration-thickness:2px}
+.cmp .v{color:#0B7F54}
+.rv ul{margin:0;padding-left:1.2em;font-size:.97rem}
+.all-ok{text-align:center;padding:10px 0;font-family:var(--font-display);font-size:1.4rem;color:var(--ok)}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ---------- Dữ liệu 25 câu ---------- */
+const RAW=[
+["My brother enjoys ___ football, but he doesn't want ___ in the school team.",["playing / to participate","to play / participating","playing / participating","to play / to participate"],0,["enjoy + V-ing","want + to V"]],
+["My teacher suggested ___ English every day to improve my speaking skills.",["practise","practising","to practise","practised"],1,["suggest + V-ing"]],
+["We are looking forward to ___ our grandparents during the summer holiday.",["visit","visited","visiting","to visit"],2,["look forward to + V-ing (to là giới từ)"]],
+["She decided ___ harder because she hopes ___ a scholarship.",["studying / getting","to study / to get","study / get","studying / to get"],1,["decide + to V","hope + to V"]],
+["My parents don't mind ___ me with my homework, but they want me ___ it independently.",["helping / to do","to help / doing","helping / doing","to help / to do"],0,["don't mind + V-ing","want somebody + to V"]],
+["You should avoid ___ too much time on social media and start ___ more useful activities.",["to spend / doing","spending / doing","spending / to do","spend / do"],1,["avoid + V-ing","start + V-ing hoặc to V"],"Lưu ý: start có thể đi với cả V-ing và to V, nên “spending / to do” cũng đúng ngữ pháp. Đáp án của đề là “spending / doing”."],
+["The teacher made us ___ the exercise again because we failed ___ all the questions correctly.",["to do / answering","doing / to answer","do / to answer","do / answering"],2,["make somebody + V (không có to)","fail + to V"]],
+["He is interested in ___ English and plans ___ an English-speaking club.",["learning / to join","to learn / joining","learning / joining","to learn / to join"],0,["be interested in + V-ing","plan + to V"]],
+["Remember ___ your homework before ___ out with your friends.",["doing / going","to do / going","doing / to go","to do / to go"],1,["remember + to V (nhớ phải làm gì)","before + V-ing"]],
+["I regret ___ you that we have decided ___ the trip.",["telling / cancelling","to tell / to cancel","tell / cancel","to tell / cancelling"],1,["regret + to V (tiếc phải thông báo)","decide + to V"]],
+["My father let me ___ his computer, but he doesn't allow me ___ games on it.",["to use / playing","using / to play","use / to play","use / playing"],2,["let somebody + V (không có to)","allow somebody + to V"]],
+["She has difficulty ___ new words, so her teacher advised her ___ a vocabulary notebook.",["remembering / to keep","to remember / keeping","remember / to keep","remembering / keeping"],0,["have difficulty + V-ing","advise somebody + to V"]],
+["We stopped ___ some food because we were hungry during the journey.",["buying","to buy","buy","bought"],1,["stop + to V (dừng lại để làm gì)"]],
+["He stopped ___ computer games and started ___ more time on his studies.",["to play / spending","playing / spending","playing / to spend","to play / to spend"],2,["stop + V-ing (ngừng hẳn việc gì)","start + to V hoặc V-ing"],"Lưu ý: start có thể đi với cả V-ing và to V, nên “playing / spending” cũng đúng ngữ pháp. Đáp án của đề là “playing / to spend”."],
+["My sister is good at ___ stories and often encourages me ___ them.",["writing / to read","to write / reading","writing / reading","to write / to read"],0,["be good at + V-ing","encourage somebody + to V"]],
+["They promised ___ us with the project, but they haven't finished ___ it yet.",["helping / to do","to help / doing","help / doing","to help / to do"],1,["promise + to V","finish + V-ing"]],
+["You had better ___ your teacher for advice instead of ___ the problem by yourself.",["asking / solving","to ask / to solve","ask / solving","ask / to solve"],2,["had better + V (không có to)","instead of + V-ing"]],
+["I remember ___ this book before, but I forgot ___ it to the library.",["reading / to return","to read / returning","reading / returning","to read / to return"],0,["remember + V-ing (nhớ đã làm gì)","forget + to V (quên phải làm gì)"]],
+["Although he tried ___ the door, he couldn't manage ___ it.",["opening / unlocking","to open / to unlock","open / unlock","to open / unlocking"],1,["try + to V (cố gắng)","manage + to V"]],
+["My mother spends a lot of time ___ the house and always reminds me ___ my room tidy.",["cleaning / to keep","to clean / keeping","cleaning / keeping","clean / to keep"],0,["spend time + V-ing","remind somebody + to V"]],
+["It is important ___ enough sleep and avoid ___ up too late.",["getting / staying","to get / staying","to get / to stay","get / stay"],1,["It is important + to V","avoid + V-ing"]],
+["He is looking forward to ___ the competition, although he is afraid of ___.",["joining / losing","join / to lose","joining / to lose","to join / losing"],0,["look forward to + V-ing (to là giới từ)","be afraid of + V-ing"]],
+["The students were made ___ the classroom after ___ their lesson.",["clean / finishing","to clean / finishing","cleaning / to finish","to clean / to finish"],1,["be made + to V (bị động của make)","after + V-ing"]],
+["She can't afford ___ a new phone, so she decided ___ money.",["buying / saving","to buy / to save","buy / save","to buy / saving"],1,["can't afford + to V","decide + to V"]],
+["Instead of ___ computer games all day, you should ___ some outdoor activities.",["playing / take part in","to play / taking part in","playing / to take part in","play / take part in"],0,["instead of + V-ing","should + V (không có to)"]]
+];
+const LET=["A","B","C","D"];
+const QS=RAW.map((r,i)=>({id:i+1,text:r[0],opts:r[1].map(o=>o.split(" / ")),ans:r[2],rules:r[3],note:r[4]||""}));
+
+/* ---------- Trạng thái ---------- */
+let S={mode:"start",list:[],pos:0,res:{},picked:null,round:"full"};
+const app=document.getElementById("app");
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const cur=()=>QS[S.list[S.pos]];
+
+function sentence(q,words,cls){
+  const parts=q.text.split("___");
+  let h="";
+  parts.forEach((p,i)=>{
+    h+=esc(p);
+    if(i<parts.length-1){
+      const w=words?words[i]:"";
+      h+=`<span class="blank ${cls||""}">${w?esc(w):"&nbsp;"}</span>`;
+    }
+  });
+  return h;
+}
+function filled(q,words){
+  const parts=q.text.split("___");
+  return parts.map((p,i)=>esc(p)+(i<parts.length-1?`<mark>${esc(words[i])}</mark>`:"")).join("");
+}
+
+/* ---------- Màn hình ---------- */
+function start(){
+  S.mode="start";
+  app.innerHTML=`
+  <section class="card hero">
+    <span class="tag">Tiếng Anh lớp 9</span>
+    <h1>Gerunds &amp; <span>Infinitives</span> Quiz</h1>
+    <p>25 câu trắc nghiệm. Nhiều câu có 2 chỗ trống, em cần chọn đúng cả hai: V-ing, to V hay V nguyên mẫu. Làm xong em sẽ thấy số câu đúng và danh sách kiến thức cần ôn lại.</p>
+    <div class="rules">
+      <div class="rule"><b>V-ing</b>enjoy, avoid, finish, look forward to…</div>
+      <div class="rule"><b>to V</b>decide, hope, plan, promise, manage…</div>
+      <div class="rule"><b>V nguyên mẫu</b>make / let + O, had better, should</div>
+      <div class="rule"><b>Đổi nghĩa</b>stop, remember, forget, regret, try</div>
+    </div>
+    <div class="row"><button class="btn" id="go">Bắt đầu làm bài</button></div>
+  </section>`;
+  document.getElementById("go").onclick=()=>begin(QS.map((_,i)=>i),"full");
+}
+function begin(list,round){
+  S={mode:"quiz",list,pos:0,res:{},picked:null,round};
+  renderQ();
+}
+function renderQ(){
+  const q=cur(),total=S.list.length,done=S.pos;
+  const correct=S.list.filter(i=>S.res[i]&&S.res[i].ok).length;
+  const answered=S.picked!==null;
+  const words=answered?q.opts[S.picked]:null;
+  const ok=answered&&S.picked===q.ans;
+  let fb="";
+  if(answered){
+    fb=`<div class="fb ${ok?"ok":"bad"}" role="status">
+      <h3>${ok?"Chính xác!":"Chưa đúng rồi"}</h3>
+      ${ok?"":`<div>Đáp án đúng: <code>${LET[q.ans]}. ${esc(q.opts[q.ans].join(" / "))}</code></div>`}
+      <ul>${q.rules.map(r=>`<li>${esc(r)}</li>`).join("")}</ul>
+      ${q.note?`<div class="note">${esc(q.note)}</div>`:""}
+    </div>
+    <div class="next"><button class="btn alt" id="next">${S.pos===total-1?"Xem kết quả":"Câu tiếp theo"}</button></div>`;
+  }
+  app.innerHTML=`
+  <div class="top">
+    <div class="top-row"><span class="chip">${S.round==="retry"?"Luyện lại · ":""}Câu ${S.pos+1}/${total}</span><span class="chip ok">Đúng: ${correct}</span></div>
+    <div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done+(answered?1:0)}"><i style="width:${(done+(answered?1:0))/total*100}%"></i></div>
+  </div>
+  <section class="card">
+    <div class="qno">Câu ${q.id}</div>
+    <div class="q">${sentence(q,words,answered?(ok?"ok":"bad"):"")}</div>
+    <ul class="opts">
+      ${q.opts.map((o,i)=>{
+        let c="opt";
+        if(answered){ if(i===q.ans)c+=" right"; else if(i===S.picked)c+=" wrong"; else c+=" dim"; }
+        return `<li><button class="${c}" data-i="${i}" ${answered?"disabled":""}><span class="l">${LET[i]}</span><span class="t">${esc(o.join(" / "))}</span></button></li>`;
+      }).join("")}
+    </ul>
+    ${fb}
+  </section>
+  ${answered?"":`<div class="hint">Mẹo: bấm phím A, B, C, D để chọn nhanh</div>`}`;
+  app.querySelectorAll(".opt").forEach(b=>b.onclick=()=>pick(+b.dataset.i));
+  const n=document.getElementById("next"); if(n){n.onclick=next;n.focus({preventScroll:true});}
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function pick(i){
+  if(S.picked!==null)return;
+  const q=cur();
+  S.picked=i;
+  S.res[S.list[S.pos]]={pick:i,ok:i===q.ans};
+  renderQ();
+}
+function next(){
+  if(S.picked===null)return;
+  if(S.pos<S.list.length-1){S.pos++;S.picked=null;renderQ();}
+  else result();
+}
+
+function result(){
+  S.mode="result";
+  const total=S.list.length;
+  const wrong=S.list.filter(i=>!S.res[i].ok);
+  const right=total-wrong.length;
+  const pct=Math.round(right/total*100);
+  const msg=pct>=90?["Xuất sắc!","Em nắm rất chắc cấu trúc Gerund và Infinitive."]:
+            pct>=70?["Làm tốt lắm!","Chỉ còn vài điểm nhỏ cần ôn lại bên dưới."]:
+            pct>=50?["Khá ổn, cố thêm chút nữa!","Em xem kỹ phần ôn tập rồi thử làm lại nhé."]:
+                    ["Đừng nản, luyện thêm nhé!","Đọc kỹ các quy tắc bên dưới rồi làm lại các câu sai."];
+  const C=2*Math.PI*60, off=C*(1-right/total);
+  const color=pct>=70?"var(--ok)":pct>=50?"var(--sun)":"var(--bad)";
+  /* gom kiến thức cần ôn */
+  const topics={};
+  wrong.forEach(i=>{
+    const q=QS[i];
+    const r=S.res[i];
+    /* chỉ tính các quy tắc của câu sai */
+    q.rules.forEach(rule=>{(topics[rule]=topics[rule]||[]).push(q.id);});
+  });
+  const tlist=Object.entries(topics).sort((a,b)=>b[1].length-a[1].length);
+  app.innerHTML=`
+  <section class="card">
+    <div class="score">
+      <div class="ring" role="img" aria-label="${right} trên ${total} câu đúng">
+        <svg viewBox="0 0 150 150"><circle cx="75" cy="75" r="60" fill="none" stroke="var(--line)" stroke-width="16"/><circle cx="75" cy="75" r="60" fill="none" stroke="${color}" stroke-width="16" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${off}"/></svg>
+        <div class="n"><div>${right}/${total}<small>${pct}%</small></div></div>
+      </div>
+      <div class="score-txt"><h2>${msg[0]}</h2><p>${msg[1]}</p></div>
+    </div>
+    <div class="stats">
+      <div class="stat a"><b>${right}</b>câu đúng</div>
+      <div class="stat b"><b>${wrong.length}</b>câu sai</div>
+      <div class="stat c"><b>${pct}%</b>chính xác</div>
+    </div>
+    <div class="map" aria-label="Kết quả từng câu">
+      ${S.list.map(i=>`<span class="dot ${S.res[i].ok?"ok":"bad"}" title="Câu ${QS[i].id}">${QS[i].id}</span>`).join("")}
+    </div>
+    <div class="row" style="margin-top:22px">
+      ${wrong.length?`<button class="btn alt" id="retry">Luyện lại ${wrong.length} câu sai</button>`:""}
+      <button class="btn ghost" id="again">Làm lại từ đầu</button>
+    </div>
+  </section>
+  ${wrong.length?`
+  <section class="card sec">
+    <h2>Kiến thức cần ôn tập</h2>
+    <p>Những quy tắc xuất hiện trong các câu em làm sai:</p>
+    <div class="topics">
+      ${tlist.map(([r,ids])=>`<div class="topic"><span>${esc(r)}</span><span>Câu ${ids.join(", ")}</span></div>`).join("")}
+    </div>
+  </section>
+  <section class="card sec">
+    <h2>Các câu cần xem lại</h2>
+    <p>Đối chiếu đáp án em chọn với đáp án đúng.</p>
+    <div class="review">
+      ${wrong.map(i=>{
+        const q=QS[i],r=S.res[i];
+        return `<article class="rv">
+          <div class="qno">Câu ${q.id}</div>
+          <div class="sent">${filled(q,q.opts[q.ans])}</div>
+          <div class="cmp">
+            <div>Em chọn: <span class="x">${LET[r.pick]}. ${esc(q.opts[r.pick].join(" / "))}</span></div>
+            <div>Đáp án đúng: <span class="v">${LET[q.ans]}. ${esc(q.opts[q.ans].join(" / "))}</span></div>
+          </div>
+          <ul>${q.rules.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>
+          ${q.note?`<div class="note">${esc(q.note)}</div>`:""}
+        </article>`;
+      }).join("")}
+    </div>
+  </section>`:`
+  <section class="card"><div class="all-ok">Em trả lời đúng tất cả các câu. Không có câu nào cần ôn lại!</div></section>`}`;
+  const rt=document.getElementById("retry");
+  if(rt)rt.onclick=()=>begin(wrong.slice(),"retry");
+  document.getElementById("again").onclick=()=>begin(QS.map((_,i)=>i),"full");
+  window.scrollTo({top:0});
+}
+
+/* phím tắt */
+document.addEventListener("keydown",e=>{
+  if(S.mode!=="quiz")return;
+  const k=e.key.toUpperCase();
+  const idx=["A","B","C","D"].indexOf(k);
+  const num=["1","2","3","4"].indexOf(e.key);
+  if(S.picked===null&&(idx>-1||num>-1)){pick(idx>-1?idx:num);}
+  else if(S.picked!==null&&e.key==="Enter"&&document.activeElement.id!=="next"){next();}
+});
+
+start();
+</script>
+
+</body></html>
